@@ -1,0 +1,27 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model List<string>
+
+<h2>Your Tasks</h2>
+
+<ul>
+    @for (int i = 0; i < Model.Count; i++)
+    {
+        <li>
+            @Model[i]
+            <form asp-action="RemoveTask" method="post" style="display:inline;">
+                <input type="hidden" name="index" value="@i" />
+                <button type="submit">Ta bort</button>
+            </form>
+        </li>
+    }
+</ul>
+
+<form asp-action="AddTask" method="post">
+    <input type="text" name="newTask" placeholder="Lägg till en uppgift" />
+    <button type="submit">Lägg till</button>
+</form>
